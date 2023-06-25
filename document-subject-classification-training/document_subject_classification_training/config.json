@@ -3,7 +3,5 @@
   "model_name": "bert-base-multilingual-cased",
   "labels_class" : {"Accounting": 0, "Aerospace Engineering": 1, "Agriculture": 2, "Algebra": 3, "Anthropology": 4, "Architecture": 5, "Astronomy": 6, "Biology": 7, "Calculus": 8, "Chemical Engineering": 9, "Chemistry": 10, "Civil Engineering": 11, "Communication Science": 12, "Computer Science": 13, "Criminology": 14, "Culinary Arts": 15, "Dentistry": 16, "Earth Science": 17, "Econometrics": 18, "Economics": 19, "Educational Science": 20, "Electrical Engineering": 21, "English": 22, "Entrepreneurship": 23, "Environmental Science": 24, "Finance": 25, "Food Science": 26, "French": 27, "Geography": 28, "Geological Science": 29, "Geometry": 30, "History": 31, "Industrial Design": 32, "Industrial Engineering": 33, "Law": 34, "Linguistics": 35, "Literature": 36, "Logic": 37, "Management": 38, "Mechanical Engineering": 39, "Medicine": 40, "Music": 41, "Nursing": 42, "Performing Arts": 43, "Philosophy": 44, "Physics": 45, "Political Science": 46, "Probability": 47, "Psychology": 48, "Public Administration": 49, "Religious Studies": 50,"Sociology": 51, "Spanish": 52, "Statistics": 53, "Trigonometry": 54, "Visual Arts": 55},
   "custom_data_path": "/home/pagolpoka/Downloads/training_data_all_clean_chucked",
-  "bbcdataset": ""
+  "bbcdataset": "/data/bbc"
  }
-
-
