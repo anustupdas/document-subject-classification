@@ -49,23 +49,29 @@ def main(args):
         if args.custom_data:
             dataset_path = Path(utils.config['custom_data_path'])
             print(dataset_path)
-
-            train_dataset = Subject_Dataset(dataset_path / 'train', tokenizer=tokenizer)
-            dev_dataset = Subject_Dataset(dataset_path / 'dev', tokenizer=tokenizer)
-            test_dataset = Subject_Dataset(dataset_path / 'test', tokenizer=tokenizer)
+            if args.train:
+                train_dataset = Subject_Dataset(dataset_path / 'train', tokenizer=tokenizer)
+                dev_dataset = Subject_Dataset(dataset_path / 'dev', tokenizer=tokenizer)
+                train_dl = DataLoader(train_dataset, batch_size=args.bs, shuffle=True,
+                                      num_workers=args.num_workers)
+                dev_dl = DataLoader(dev_dataset, batch_size=args.test_bs, shuffle=False,
+                                    num_workers=args.num_workers)
+            else:
+                test_dataset = Subject_Dataset(dataset_path / 'test', tokenizer=tokenizer)
+                test_dl = DataLoader(test_dataset, batch_size=args.test_bs, shuffle=False,
+                                     num_workers=args.num_workers)
         else:
             # Can be implemented for some other dataset.
             # Custom dataset class can be created according to preprocessig needs.
-            train_dataset = ""
-            dev_dataset = ""
-            test_dataset = ""
+            train_dl = DataLoader("", batch_size=args.test_bs, shuffle=False,
+                                    num_workers=args.num_workers)
+            dev_dl = DataLoader("", batch_size=args.test_bs, shuffle=False,
+                                    num_workers=args.num_workers)
+            test_dl = DataLoader("", batch_size=args.test_bs, shuffle=False,
+                                    num_workers=args.num_workers)
+            print("No Other Dataset is Implemented apart from --custom_data")
 
-        train_dl = DataLoader(train_dataset, batch_size=args.bs, shuffle=True,
-                              num_workers=args.num_workers)
-        dev_dl = DataLoader(dev_dataset, batch_size=args.test_bs, shuffle=False,
-                            num_workers=args.num_workers)
-        test_dl = DataLoader(test_dataset, batch_size=args.test_bs, shuffle=False,
-                             num_workers=args.num_workers)
+            return
 
     assert bool(args.model) ^ bool(args.load_from)  # exactly one of them must be set
 
@@ -99,7 +105,7 @@ def main(args):
 if __name__ == '__main__':
     parser = ArgumentParser()
     parser.add_argument('--cuda', help='Use cuda?', action='store_true')
-    parser.add_argument('--test', help='Test mode? (e.g fake word2vec)', action='store_true')
+    parser.add_argument('--test', help='Test mode? (e.g fake Bert Model)', action='store_true')
     parser.add_argument('--train', help='Training mode', action='store_true')
     parser.add_argument('--bs', help='Batch size', type=int, default=2)
     parser.add_argument('--test_bs', help='Batch size', type=int, default=1)
