@@ -80,9 +80,9 @@ def train(model, train_data, val_data, learning_rate, epochs, checkpoint_path):
             print(f"Saving Best model at epoch {epoch_num}: {save_path}")
             torch.save(model, save_path)
 
-        save_path = os.path.join(checkpoint_path, f'model_{epoch_num}.t7')
-        print("Saving: ", save_path)
-        torch.save(model, save_path)
+        # save_path = os.path.join(checkpoint_path, f'model_{epoch_num}.t7')
+        # print("Saving: ", save_path)
+        # torch.save(model, save_path)
 
 
 
