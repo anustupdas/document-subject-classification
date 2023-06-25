@@ -72,7 +72,7 @@ def train(model, train_data, val_data, learning_rate, epochs, checkpoint_path):
         print(
             f'Epochs: {epoch_num + 1} | Train Loss: {total_loss_train / len(train_data): .3f} | Train Accuracy: {total_acc_train / len(train_data): .3f} | Val Loss: {total_loss_val / len(val_data): .3f} | Val Accuracy: {total_acc_val / len(val_data): .3f}')
 
-        eval_acc = total_loss_val / len(val_data)
+        eval_acc = total_acc_val / len(val_data)
         if eval_acc > best_val_pk:
             best_val_pk = eval_acc
 
