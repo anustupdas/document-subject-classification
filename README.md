@@ -1,6 +1,20 @@
-# document-sucject-classification
-Text classification with Hugging face transformers.
+# Document Subject Text Classification
+
+This repository contains code and supplementary materials which are required to train and evaluate a Hugging face Bert based model
+used for text classification task. The task it to classify the subject label given a document.
 This is a Pytorch implementation.
+
+Codebase:
+>  https://github.com/anustupdas/document-sucject-classification.git
+
+
+Subject datasets:
+>  https://drive.google.com/drive/folders/11-dfGZkqZl-LRgo9cCSSsMyVxFgAEMnW?usp=sharing 
+
+Trained Models:
+>  https://drive.google.com/drive/folders/11-dfGZkqZl-LRgo9cCSSsMyVxFgAEMnW?usp=sharing 
+
+
 
 
 ## Link to Notebooks:
