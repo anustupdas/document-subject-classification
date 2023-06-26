@@ -52,7 +52,7 @@ Example:
 
     !python run.py --custom_data --model --train --epochs 4 --bs 10 --test_bs 8     
 
-## How to evaluate trained model (on wiki-727/choi dataset)?
+## How to evaluate trained model?
 
     python run.py --custom_data --load_from 'Path To Trained Model .t7 file'
 
@@ -60,7 +60,7 @@ Example:
 
     python run.py --custom_data --load_from '/content/document-sucject-classification/document-subject-classification-training/document_subject_classification_training/checkpoints/best_model_3.t7'
 
-## How to evaluate trained model (on wiki-727/choi dataset)?
+## How to inference trained model ?
 
     !python run_inference.py --load_from "Path To Trained Model .t7 file"
 
