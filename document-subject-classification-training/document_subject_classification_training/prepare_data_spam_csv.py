@@ -7,15 +7,6 @@ import numpy as np
 
 from Utils.data_preparation_utils import *
 
-train_flter_path = "/home/anustup/Desktop/Projects/Personal/studocu_spam_poc/data/clean_train_ids.npy"
-test_flter_path = "/home/anustup/Desktop/Projects/Personal/studocu_spam_poc/data/clean_test_ids.npy"
-val_flter_path = "/home/anustup/Desktop/Projects/Personal/studocu_spam_poc/data/clean_val_ids.npy"
-
-train_loaded_data = np.load(train_flter_path)
-test_loaded_data = np.load(test_flter_path)
-val_loaded_data = np.load(val_flter_path)
-
-
 big_data = []
 
 def split_data_for_training(dataset_for_training):
