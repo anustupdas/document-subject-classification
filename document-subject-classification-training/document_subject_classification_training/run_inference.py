@@ -16,6 +16,10 @@ def predict(test_input, model, label_dict):
     output = model(input_id, mask)
     predicted_label = output.argmax(dim=1).tolist()[0]
     class_label = list(label_dict.keys())[list(label_dict.values()).index(predicted_label)]
+    if class_label in ['Random (best rated docs)']:
+        print("Accepted")
+    else:
+        print("Rejected")
     print(class_label)
 
 
