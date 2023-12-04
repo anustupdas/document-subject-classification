@@ -3,6 +3,7 @@ import re
 import nltk
 import pandas as pd
 from Utils.utils import prepare_output_dir
+from Utils.data_preparation_utils import *
 from nltk.corpus import stopwords
 
 nltk.download('punkt')
@@ -87,9 +88,9 @@ def break_text_in_parts(content, word_limit=510):
 
 def save_datasets(dataset_dataframe, output_path):
     print(len(dataset_dataframe))
-    train_df = pd.DataFrame(dataset_dataframe[0], columns=['file_name', 'text', 'summary', 'category'])
-    val_df = pd.DataFrame(dataset_dataframe[1], columns=['file_name', 'text', 'summary', 'category'])
-    test_df = pd.DataFrame(dataset_dataframe[2], columns=['file_name', 'text', 'summary', 'category'])
+    train_df = pd.DataFrame(dataset_dataframe[0], columns=['file_name', 'text', 'accept', 'category'])
+    val_df = pd.DataFrame(dataset_dataframe[1], columns=['file_name', 'text', 'accept', 'category'])
+    test_df = pd.DataFrame(dataset_dataframe[2], columns=['file_name', 'text', 'accept', 'category'])
 
     prepare_output_dir(output_path)
 

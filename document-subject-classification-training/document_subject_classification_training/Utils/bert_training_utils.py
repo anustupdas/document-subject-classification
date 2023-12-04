@@ -5,7 +5,9 @@ from torch.optim import Adam
 from tqdm import tqdm
 import numpy as np
 from sklearn.metrics import confusion_matrix
+from sklearn.metrics import ConfusionMatrixDisplay
 from sklearn.metrics import classification_report
+import matplotlib.pyplot as plt
 
 
 
@@ -92,8 +94,7 @@ def evaluate(model, test_data):
 
     pred_list = []
     original_list = []
-    targets_labels = ["Accounting", "Aerospace Engineering", "Agriculture", "Algebra", "Anthropology", "Architecture", "Astronomy", "Biology", "Calculus", "Chemical Engineering", "Chemistry", "Civil Engineering", "Communication Science", "Computer Science", "Criminology", "Culinary Arts", "Dentistry", "Earth Science", "Econometrics", "Economics", "Educational Science", "Electrical Engineering", "English", "Entrepreneurship", "Environmental Science", "Finance", "Food Science", "French", "Geography", "Geological Science", "Geometry", "History", "Industrial Design", "Industrial Engineering", "Law", "Linguistics", "Literature", "Logic", "Management", "Mechanical Engineering", "Medicine", "Music", "Nursing", "Performing Arts", "Philosophy", "Physics", "Political Science", "Probability", "Psychology", "Public Administration", "Religious Studies","Sociology", "Spanish", "Statistics", "Trigonometry", "Visual Arts"]
-
+    targets_labels = ["Random (best rated docs)", "Curriculum vitae", "Catalogues", "Call girls", "tutors", "Online bets", "Download PDF"]
     test_dataloader = test_data
 
     use_cuda = torch.cuda.is_available()
@@ -127,6 +128,29 @@ def evaluate(model, test_data):
     confusion = confusion_matrix(y_test, y_pred)
     print('Confusion Matrix\n')
     print(confusion)
+
+    confusion_normalized = confusion.astype('float') / confusion.sum(axis=1)[:, np.newaxis]
+    fig, ax = plt.subplots(figsize=(20, 20))  # Adjust the size as needed
+    # Use ConfusionMatrixDisplay to plot the normalized confusion matrix
+    disp = ConfusionMatrixDisplay(confusion_matrix=confusion_normalized, display_labels=targets_labels)
+    disp.plot(cmap='viridis', values_format='.2f', ax=ax, colorbar=False)
+
+    # Add a title and labels to the plot
+    plt.title('Normalized Confusion Matrix')
+    plt.ylabel('True label')
+    plt.xlabel('Predicted label')
+    # Improve the display of labels (especially if they are long or numerous)
+    plt.xticks(rotation=45, ha='right')
+    plt.yticks(rotation=45)
+
+    # Optionally, add a colorbar to indicate the scale
+    plt.colorbar(disp.im_, ax=ax)
+
+    # Increase the default font size for readability
+    plt.rcParams.update({'font.size': 14})
+    # Save the plot as a PNG file
+    plt.savefig('confusion_matrix.png', bbox_inches='tight', dpi=300)
+    plt.close(fig)
 
     print('\nClassification Report\n')
     print(classification_report(y_test, y_pred, target_names=targets_labels))
