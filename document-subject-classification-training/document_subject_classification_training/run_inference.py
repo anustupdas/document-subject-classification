@@ -30,7 +30,8 @@ def main(args):
     text = "It is Very hot in Assam"
     if args.text:
         text = args.text
-
+    else:
+        text = input("Enter text:")
     encoded_text = tokenizer(str(text), padding='max_length', max_length=512, truncation=True, return_tensors="pt")
     if not args.load_from:
         print("Please provide model_path to load from for inferencing")
